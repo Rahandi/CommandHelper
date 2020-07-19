@@ -6,6 +6,7 @@
 	"publisher": "Rahandi",
 	"repository": "https://github.com/Rahandi/CommandHelper",
 	"qna": "marketplace",
+	"license": "SEE LICENSE IN LICENSE.md",
 	"engines": {
 		"vscode": "^1.47.0"
 	},
