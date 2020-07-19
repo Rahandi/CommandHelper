@@ -6,4 +6,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-- Initial release
+### Added
+- Core extension function
+
+## [1.0.0] - 2020-07-19
+Release 1.0.0
