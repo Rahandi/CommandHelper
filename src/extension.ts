@@ -16,8 +16,10 @@ function activate(context: { subscriptions: any[]; }) {
 			placeHolder: 'choose command'
 		});
 
-		let commandHelper = new CommandHelper(commands[String(selected)]);
-		commandHelper.execute();
+		if (selected) {
+			let commandHelper = new CommandHelper(commands[String(selected)]);
+			commandHelper.execute();
+		}
 	});
 
 	context.subscriptions.push(disposable);

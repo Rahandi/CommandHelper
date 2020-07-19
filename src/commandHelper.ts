@@ -4,19 +4,22 @@ export class CommandHelper {
     command: string;
     args: any;
     terminal: { name: string };
+    flag: number;
 
     constructor(commandObject: any) {
         this.command = commandObject['command'];
         this.args = commandObject['args'];
         this.terminal = commandObject['terminal'];
+        this.flag = 1;
     }
 
     async execute() {
-        let command = this.processCommandArgs();
-        let terminal = this.processTerminal();
-
-        terminal.sendText(await command);
-        terminal.show();
+        let command = await this.processCommandArgs();
+        if (this.flag) {
+            let terminal = this.processTerminal();
+            terminal.sendText(command);
+            terminal.show();
+        }
     }
 
     async processCommandArgs(): Promise<string>
@@ -30,6 +33,10 @@ export class CommandHelper {
         let key: string;
         let value: string | Array<string>;
         for (key in this.args) {
+            if (!this.flag) {
+                return command;
+            }
+
             value = this.args[key];
             let replace;
 
@@ -38,8 +45,8 @@ export class CommandHelper {
                     value, 
                     {
                         canPickMany: false, 
-                        placeHolder: `${command} | choose for ${key}`
-                    }
+                        placeHolder: `${command} | choose for ${key}`,
+                    },
                 );
             } else if (value === 'INPUT') {
                 replace = await vscode.window.showInputBox(
@@ -52,6 +59,7 @@ export class CommandHelper {
             }
 
             if(!replace) {
+                this.flag = 0;
                 replace = '';
             }
 
