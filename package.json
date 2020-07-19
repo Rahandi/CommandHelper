@@ -15,7 +15,7 @@
 	"activationEvents": [
 		"onCommand:commandhelper.start"
 	],
-	"icon": "https://github.com/Rahandi/CommandHelper/blob/master/data/code.png",
+	"icon": "data/code.png",
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
