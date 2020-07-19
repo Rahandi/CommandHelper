@@ -1,8 +1,11 @@
 {
 	"name": "commandhelper",
-	"displayName": "CommandHelper",
-	"description": "Easy helper for commands",
+	"displayName": "Command Helper",
+	"description": "Easy helper for using commands",
 	"version": "0.0.1",
+	"publisher": "Rahandi",
+	"repository": "https://github.com/Rahandi/CommandHelper",
+	"qna": "marketplace",
 	"engines": {
 		"vscode": "^1.47.0"
 	},
@@ -25,7 +28,16 @@
 				"command": "commandhelper.start",
 				"key": "ctrl+shift+q"
 			}
-		]
+		],
+		"configuration": {
+			"title": "CommandHelper",
+			"properties": {
+				"command-helper.commands": {
+					"type": "object",
+					"description": "Set custom commands"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
